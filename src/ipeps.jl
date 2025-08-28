@@ -10,7 +10,7 @@ end
 Load (1-layer) InfinitePEPO from folder
 """
 function load_iPEPO(folder::AbstractString, N1::Int, N2::Int)
-    pepo = InfinitePEPO(cat(load_tensors(folder, "A", N1, N2); dims = 3))
+    pepo = InfinitePEPO(cat(load_tensors(folder, "O", N1, N2); dims = 3))
     return pepo
 end
 
