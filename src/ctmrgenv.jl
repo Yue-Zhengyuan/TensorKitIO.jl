@@ -1,15 +1,15 @@
 """
 Load `CTMRGEnv` from folder
 """
-function load_CTMRGEnv(folder::AbstractString, N1::Int, N2::Int)
+function load_CTMRGEnv(folder::AbstractString, Nrow::Int, Ncol::Int)
     @assert endswith(folder, "/")
     corners = collect(
         load_tensor(folder * "c$n-$r$c.jld2") for
-            (n, r, c) in Iterators.product(1:4, 1:N1, 1:N2)
+            (n, r, c) in Iterators.product(1:4, 1:Nrow, 1:Ncol)
     )
     edges = collect(
         load_tensor(folder * "t$n-$r$c.jld2") for
-            (n, r, c) in Iterators.product(1:4, 1:N1, 1:N2)
+            (n, r, c) in Iterators.product(1:4, 1:Nrow, 1:Ncol)
     )
     return CTMRGEnv(corners, edges)
 end

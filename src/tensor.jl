@@ -9,10 +9,10 @@ end
 """
 Load a matrix of TensorMaps
 """
-function load_tensors(folder::AbstractString, label::AbstractString, N1::Int, N2::Int)
+function load_tensors(folder::AbstractString, label::AbstractString, Nrow::Int, Ncol::Int)
     @assert endswith(folder, "/")
     arr = collect(
-        load_tensor(folder * "$label$r$c.jld2") for (r, c) in Iterators.product(1:N1, 1:N2)
+        load_tensor(folder * "$label$r$c.jld2") for (r, c) in Iterators.product(1:Nrow, 1:Ncol)
     )
     return arr
 end

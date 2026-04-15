@@ -1,25 +1,25 @@
 """
 Load InfinitePEPS from folder
 """
-function load_iPEPS(folder::AbstractString, N1::Int, N2::Int)
-    peps = InfinitePEPS(load_tensors(folder, "A", N1, N2))
+function load_iPEPS(folder::AbstractString, Nrow::Int, Ncol::Int)
+    peps = InfinitePEPS(load_tensors(folder, "A", Nrow, Ncol))
     return peps
 end
 
 """
 Load (1-layer) InfinitePEPO from folder
 """
-function load_iPEPO(folder::AbstractString, N1::Int, N2::Int)
-    pepo = InfinitePEPO(cat(load_tensors(folder, "O", N1, N2); dims = 3))
+function load_iPEPO(folder::AbstractString, Nrow::Int, Ncol::Int)
+    pepo = InfinitePEPO(cat(load_tensors(folder, "O", Nrow, Ncol); dims = 3))
     return pepo
 end
 
 """
 Load SUWeight from folder
 """
-function load_SUWeight(folder::AbstractString, N1::Int, N2::Int)
-    wxs = collect(DiagonalTensorMap(wt) for wt in load_tensors(folder, "x", N1, N2))
-    wys = collect(DiagonalTensorMap(wt) for wt in load_tensors(folder, "y", N1, N2))
+function load_SUWeight(folder::AbstractString, Nrow::Int, Ncol::Int)
+    wxs = collect(DiagonalTensorMap(wt) for wt in load_tensors(folder, "x", Nrow, Ncol))
+    wys = collect(DiagonalTensorMap(wt) for wt in load_tensors(folder, "y", Nrow, Ncol))
     return SUWeight(wxs, wys)
 end
 
