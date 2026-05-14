@@ -44,7 +44,7 @@ end
 Save `SUWeight` to files
 """
 function save_SUWeight(folder::AbstractString, wts::SUWeight)
-    save_tensors(folder, "x", wts[1, :, :])
-    save_tensors(folder, "y", wts[2, :, :])
+    save_tensors(folder, "x", wts.data[1, :, :])
+    save_tensors(folder, "y", wts.data[2, :, :])
     return nothing
 end
